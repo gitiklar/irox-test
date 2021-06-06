@@ -15,7 +15,7 @@ const Entry = () => {
 			<header id="header">
                 <Row>
                     <Col span={8}><Link to="/"><img src = { logoImg } alt="logo"/></Link></Col>
-                    <Col span={8}><h1 className="titleText">Test Irox</h1></Col>
+                    <Col span={8}><h1 className="titleText">Event display system</h1></Col>
                     <Col span={8}><div className="linkToHome"><Link to="/home"><u>entry</u></Link></div></Col>
                 </Row>
 			</header>
@@ -25,7 +25,7 @@ const Entry = () => {
                     <div className="entryPage">
                         <div className="innerEntryPage">
                             <div className="bannerContainer">
-                                <h1> Wellcome to the test of Irox </h1>
+                                <h1> Wellcome to the event display system </h1>
                                 <h2> Hope you will enjoy from our new site <SmileOutlined/></h2>
                             </div>
                         </div>
