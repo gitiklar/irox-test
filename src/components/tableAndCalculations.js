@@ -5,26 +5,26 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import addIcon from '../../styles/images/addIcon.jpg';
 import AntdTable from './antdTable';
-import Ccc from './typesComponents/ccc';
-import Aaa from './typesComponents/aaa';
-import Bbb from './typesComponents/bbb';
+import Phone from './typesComponents/phone';
+import E_Mail from './typesComponents/e_mail';
+import Sms from './typesComponents/sms';
 import { updateJsonData } from '../redux/actions';
-const componentsByTypeObj = { Aaa,  Bbb, Ccc };
+import Summary from './summary';
+const componentsByTypeObj = { Phone ,  "E-Mail" : E_Mail, 'SMS': Sms };
 
 const TableAndCalculations = () => {
     const dispatch = useDispatch();
-    const amountOfSelectedType = useSelector(state => state.tableDataReducer.amountOfSelectedType);
-    const selectedRow = useSelector(state => state.tableDataReducer.selectedRow); let RelevantComponent = null;
-    selectedRow && (RelevantComponent = componentsByTypeObj[selectedRow.type.charAt(0).toUpperCase() + selectedRow.type.slice(1)]);
+    const selectedRow = useSelector(state => state.tableDataReducer.selectedRow); 
+    let RelevantComponent = null;
+    selectedRow && (RelevantComponent = componentsByTypeObj[selectedRow.EventType.replace( /\s/g, '')]);
 
     return (
         <div className="innerContainer">
             <div className="calculationsContainer">
-                <div>Row summary:</div>
-                <div>{selectedRow && <RelevantComponent amountOfSelectedType={amountOfSelectedType} row={selectedRow}/>}</div>
+                <Summary/>
             </div>
             <div className="tableContainer">
-                <Upload accept=".xml,.txt,.json" showUploadList={false} 
+                    <Upload accept=".xml,.txt,.json" showUploadList={false} 
                                             beforeUpload={file => {
                                                             const reader = new FileReader();
                                                             reader.onload = e => { 
@@ -39,6 +39,7 @@ const TableAndCalculations = () => {
                     </Tooltip>
                 </Upload>
                 <AntdTable/>
+                {selectedRow && <RelevantComponent row={selectedRow}/>}
             </div>   
         </div>
     );

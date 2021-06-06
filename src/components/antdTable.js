@@ -16,6 +16,7 @@ const AntdTable = () => {
                                             }));
 
     useEffect(()=>{
+        if(!data.length) return;
         dispatch(updateJsonData(data));
     },[]);
 
@@ -35,7 +36,11 @@ const AntdTable = () => {
                                                             </Space>),},];
 
     return (
-        <Table columns={columns} dataSource={data} pagination={{ pageSize: 5 }}/>
+        <Table columns={columns} dataSource={data}  pagination={{ pageSize: 5 }} onRow={(record, rowIndex) => {
+                                                                                            return {
+                                                                                                onClick: event => updateSelectedRowHandler(record), // click row
+                                                                                            };
+                                                                                        }}/>
     );
 }
 
