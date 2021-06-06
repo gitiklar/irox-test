@@ -1,0 +1,180 @@
+$banner-color: gray;
+$header-height: 6.5vh;
+
+.entryContainer {
+    &:before {
+        content: ' ';
+        background-image: url(./images/bg.jpg);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        display: block;
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        opacity: 0.05;
+    }
+
+    #header {  
+        height: $header-height;
+        width: 100%;
+        background: #111111;
+        color: rgba(255, 255, 255, 0.5);
+
+        .ant-col-8 {
+            height: $header-height;
+
+            img {
+                height: 100%;
+            }
+
+            .titleText {
+                height: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 2.5vh;
+                color: #ffffffb6;
+            }
+
+            .linkToHome {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                justify-content: flex-end;
+                padding-right: 20px;
+                height: 100%;
+                font-size: 2.1vh;
+                a {
+                    color: #ffffffb6;
+                }
+            }
+        }
+    }
+
+    #heading {
+        background-color: #111111;
+        color: rgba(255, 255, 255, 0.5);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-image: linear-gradient(rgba(17, 17, 17, 0.25), rgba(17, 17, 17, 0.25)), url("./images/banner.jpg");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        border-top: 0;
+        height: calc((100vh - #{$header-height}) * 0.5);
+        overflow: hidden;
+        position: relative;
+        text-align: center;
+        width: 100%; 
+
+        &:before {
+            background: linear-gradient(135deg, #ce1b28 0%, #111111 74%);
+            content: ' ';
+            display: block;
+            height: 100%;
+            left: 0;
+            opacity: 0.6;
+            position: absolute;
+            top: 0;
+            width: 100%;
+            z-index: 1; 
+        }
+
+        h1 {
+            color: white;
+            margin-bottom: 0;
+            position: relative;
+            z-index: 2;
+        }
+
+        .lineMenu {
+            width: 100%;
+            height: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 3;
+            backdrop-filter: blur(100px);
+            padding: 20px 0;
+
+            button {
+                background-color: transparent;
+                color: white;
+                border: none;
+            }
+        }
+    }
+
+    .wrapper {
+        height: calc((100vh - #{$header-height})*0.5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        
+        .inner {            
+            .entryPage {
+            
+                & , .innerEntryPage {
+                    width: 100%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+            
+                    .bannerContainer {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        width: 100%;
+                        height: 100%;
+            
+                        h1 {
+                            font-family: 'Raleway';
+                            font-size: 3.5vw;
+                            font-weight: 100;
+                            line-height: 1;
+                        }
+            
+                        h2 {
+                            font-weight: 100;
+                            line-height: 0.8;
+                        }
+            
+                        h1 , h2 {
+                            color: $banner-color;
+                        }
+            
+                        h2 {
+                            font-size: 2vw;
+                        }
+            
+                        @media only screen and (max-width: 550px) {
+                            h1 {
+                                font-size: 6vw;
+                                font-weight: 100;
+                            }
+                            
+                            h2 {
+                                font-size: 4vw;
+                            }
+                        }
+                        
+                        @media only screen and (max-height: 500px) {
+                            h1 {
+                                font-size: 4vh;
+                            }
+                            
+                            h2 {
+                                font-size: 3vh;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
