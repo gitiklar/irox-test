@@ -23,7 +23,7 @@ export const getDurationHoursBetweenDates = (startDate , endDate) => {
 }
 
 export const getAdditionalInformationFromRow = row => {
-    const arrayOfHardCodedKeys = ['-ID' , 'EventTarget' , 'EventType' , 'EventName' , 'EventFrom' , 'EventTo' , 'EventChecked'];
+    const arrayOfHardCodedKeys = ['-ID' , 'EventTarget' , 'EventType' , 'EventName' , 'EventFrom' , 'EventTo' , 'EventChecked' , 'key' , 'DurationHours'];
     const additionalKeys = Object.keys(row).filter(key=>!arrayOfHardCodedKeys.includes(key));
     return additionalKeys.map(key=>`${key}: ${row[key]}`).join(' , ');
 }

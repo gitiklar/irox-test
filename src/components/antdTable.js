@@ -1,24 +1,14 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import 'antd/dist/antd.css';
 import { Table, Space } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { getDurationHoursBetweenDates, getAdditionalInformationFromRow ,updateJsonData, updateSelectedRow } from '../redux/actions';
+import {  updateSelectedRow } from '../redux/actions';
 
 
 const AntdTable = () => {
     const dispatch = useDispatch();
     const jsonData = useSelector(state => state.tableDataReducer.jsonData);    
-
-    const data = jsonData.map((row, index)=>({key:index  ,...row , 
-                                              DurationHours: getDurationHoursBetweenDates(row.EventFrom , row.EventTo),
-                                              AdditionalInformation: getAdditionalInformationFromRow(row),
-                                            }));
-
-    useEffect(()=>{
-        if(!data.length) return;
-        dispatch(updateJsonData(data));
-    },[]);
 
     const updateSelectedRowHandler = record => dispatch(updateSelectedRow(record));
 
@@ -36,26 +26,12 @@ const AntdTable = () => {
                                                             </Space>),},];
 
     return (
-        <Table columns={columns} dataSource={data}  pagination={{ pageSize: 5 }} onRow={(record, rowIndex) => {
+        <Table columns={columns} dataSource={jsonData}  pagination={{ pageSize: 5 }} onRow={(record, rowIndex) => {
                                                                                             return {
-                                                                                                onClick: event => updateSelectedRowHandler(record), // click row
+                                                                                                onClick: e => updateSelectedRowHandler(record),
                                                                                             };
                                                                                         }}/>
     );
 }
 
 export default AntdTable;
-
-
-
-// const columns = [
-//     { title: 'Name', dataIndex: 'name', key: 'name', },
-//     { title: 'Type', dataIndex: 'type', key: 'type', },
-//     { title: 'StartDate', dataIndex: 'startDate', key: 'startDate', },
-//     { title: 'EndDate', dataIndex: 'endDate', key: 'endDate', },
-//     { title: 'TotalDays' , dataIndex: 'totalDays', key: 'totalDays', },
-//     { title: 'Action', key: 'action', render: row => ( 
-//                                                         <Space size="middle">
-//                                                             <Button onClick={()=>updateSelectedRowHandler(row)}>Summary</Button>
-//                                                         </Space>),},];
-

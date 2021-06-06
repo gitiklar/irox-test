@@ -17,7 +17,7 @@ const HomeContainer = ({children}) => {
             <div id="heading" >
                 <div className="menuLine">
                     <Link to="/">Back to entry</Link>
-                    <Link to="/table">table</Link>
+                    <Link to="/table">Events table</Link>
                 </div>
             </div>
             <section id="main">

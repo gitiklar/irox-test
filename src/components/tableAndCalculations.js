@@ -7,10 +7,9 @@ import addIcon from '../../styles/images/addIcon.jpg';
 import AntdTable from './antdTable';
 import Phone from './typesComponents/phone';
 import E_Mail from './typesComponents/e_mail';
-import Sms from './typesComponents/sms';
 import { updateJsonData } from '../redux/actions';
 import Summary from './summary';
-const componentsByTypeObj = { Phone ,  "E-Mail" : E_Mail, 'SMS': Sms };
+const componentsByTypeObj = { Phone ,  "E-Mail" : E_Mail, 'SMS':  () => <></> };
 
 const TableAndCalculations = () => {
     const dispatch = useDispatch();
